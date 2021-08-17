@@ -1,0 +1,51 @@
+/* Menu-----------------------------------------------------------*/
+.nav-back{
+    background: rgba(17, 219, 207,0.8);
+    color: #fff;
+}
+.navbar-brand{
+  color: #000;
+}
+.navbar-brand:hover{
+  color: #fff;
+}
+.nav-link{
+  color: #000;
+}
+.nav-link:hover{
+  color:#fff;
+}
+.navbar-toggler{
+  outline: none!important;
+} 
+/* body-------------------------------------------------------- */
+.camp{
+    margin-top: 25%;
+}
+nav .navsearch{
+    margin-top: 10%;
+}
+form{
+    margin-top: 5%;
+}
+.insert-btn{
+    outline: none; border: none;
+    background-color: rgb(20, 224, 224);
+    padding: 10px; border-radius: 5px;
+}
+  /*--------------------------------------------------------------
+  # Footer
+  --------------------------------------------------------------*/
+  .footer {
+    text-align: center;
+    font-size: 0.9rem;
+    background:rgba(17, 219, 207,0.8);
+    margin-top: 50%;
+  }
+  .footer .btn-back{
+    background: #fff;
+    color: #00d9ff;
+  }
+  .footer .text{
+    color: #000;
+  }

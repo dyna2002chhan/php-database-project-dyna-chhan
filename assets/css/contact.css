@@ -1,0 +1,70 @@
+/*Contac--------------------------------------------------------*/
+  .contact-box {
+    color: #000;
+    text-align: center;
+    box-shadow: 0 0 20px rgba(65, 76, 100, 0.05);
+    padding: 20px 0 30px 0;
+    background:#11dbcf;
+  }
+  .contact-box i {
+    font-size: 32px;
+    color: #fff;
+    border-radius: 50%;
+    padding: 8px;
+  }
+  .contact-box h3 {
+    font-size: 20px;
+    color: #000;
+    font-weight: bold;
+    margin: 10px 0;
+  }
+  .contact-box p {
+    padding: 0;
+    line-height: 24px;
+    font-size: 14px;
+    margin-bottom: 0;
+  }
+  .contact button{
+    background: #11dbcf;
+    border: none;
+    padding: 10px;
+  }
+
+ .contact button:hover{
+   background: #00d9ff;
+   color: #fff;
+ } 
+  /* Menu-----------------------------------------------------------*/
+  .nav-back{
+    background: rgba(17, 219, 207,0.8);
+    color: #fff;
+}
+.navbar-brand{
+  color: #000;
+}
+.navbar-brand:hover{
+  color: #fff;
+}
+.nav-link{
+  color: #000;
+}
+.nav-link:hover{
+  color:#fff;
+}
+.navbar-toggler{
+  outline: none!important;
+} 
+  /* footer....................................................... */
+  .footer {
+    text-align: center;
+    font-size: 0.9rem;
+    background:rgba(17, 219, 207,0.8);
+  }
+  .footer .btn-back{
+    background: #fff;
+    color: #00d9ff;
+  }
+  .footer .text{
+    color: #000;
+  }
+  
