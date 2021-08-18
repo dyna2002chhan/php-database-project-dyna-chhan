@@ -1,6 +1,7 @@
 <?php 
   include('partials/header.php');
 ?>  
+
    <!-- ======= Hero Section ======= -->
    <section id="hero" class="d-flex align-items-center">
     <div class="container text-center position-relative">

@@ -6,7 +6,7 @@
         <!-- Required meta tags -->
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
+      
             <link rel="stylesheet" href="assets/css/home.css">
             <link rel="stylesheet" href="assets/css/info.css">
             <link rel="stylesheet" href="assets/css/contact.css">
@@ -33,6 +33,11 @@
                        href="info.php">ព័ត៏មានលំអិត</a></li>
                      <li class="nav-item"><a class="nav-link" 
                        href="contact.php">ទំនាក់ទំនង</a></li>
+                        <div class="form-group">
+                          <!-- pel click submit, it request using post -->
+                          <a href="login.php" type="submit" class="btn btn-primary btn-block​ ml-5">ចូលគណនី</a>
+                        </div>
+
                  </ul>
              </div>
          </div>
