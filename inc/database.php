@@ -1,4 +1,5 @@
 <?php
+    // session_start();
     //connect to database..........................................................................................//
     function database(){
         return new mysqli('localhost','root','','phpproject');
@@ -6,7 +7,7 @@
 
     //get one data.................................................................................................//
     function getOneData($id){
-        return database()-query("SELECT * FROM posts INNER JOIN doctors ON posts.doctor_id = doctors.doctor_id
+        return database()->query("SELECT * FROM posts INNER JOIN doctors ON posts.doctor_id = doctors.doctor_id
                                                      WHERE posts.post_id = $id");
     } 
 
@@ -23,21 +24,51 @@
     
     //edit data....................................................................................................//
     function editData($value){
+        $id = $value['id'];
         $title = $value['title'];
         $description = $value['description'];
-        $date = $value['date'];
-        $doctor_id = $value['doctor_id'];
-        return database()->query("UPDATE posts SET title = '$title', description = '$description', date = '$date', doctor_id = '$doctor_id'");
+        $firstname = $value['firstname'];
+        $lastname = $value['lastname'];
+        $doctor = database()->query("SELECT doctors.doctor_id FROM posts INNER JOIN doctors USING (doctor_id) where doctors.firstname ='$firstname' and doctors.lastname='$lastname'");
+        
+        foreach($doctor as $info){
+            $doctorid = $info['doctor_id'];
+        }
+        return database()->query("UPDATE posts SET title = '$title', description = '$description', doctor_id = '$doctorid' WHERE post_id = '$id'");
     }
 
     //create infomation of a patient...............................................................................//
     function insertPost($value){
         $title = $value['title'];
         $description = $value['description'];
-        $date = $value['date'];
-        $doctor_id = $value['doctor_id'];
-        // $firstname = $value['firstname'];
-        // $lastname = $value['lastname'];
-        // $profile_pic = $value['profile_pic'];
-        return database()->query("INSERT INTO posts(title,date,description, doctor_id) VALUES ('$title','$date', '$description','$doctor_id')");
+        $doctor_id = intval($value['doctor_id']);
+        $doctorImg = $value['doctorImg'];
+        return database()->query("INSERT INTO posts(title,doctor_picture,description, doctor_id) VALUES ('$title','$doctorImg','$description','$doctor_id')");
+    }
+    //upload image
+    function uploadImage($file){
+        $imageName = $file['name'];
+        $imageTmp = $file['tmp_name'];
+        $imageSize = $file['size'];
+        $error = $file['error'];
+        if ($error !=0){
+            $newImageName = "";
+        }else{
+            if($imageSize > 1000000){
+                header('location: insert_doctor.php');
+                $_SESSION['message'] = "This image is too large";
+            }else{
+                $extension = pathinfo($imageName, PATHINFO_EXTENSION);
+                $extensionLocal = strtolower($extension);
+                $allowExtension = array('jpg', 'png', 'jpeg', 'pdf');
+    
+                if(in_array($extensionLocal, $allowExtension)){
+                    $newImageName = uniqid('post-', true) . '.' . $extensionLocal;
+                    $folderImage = 'assets/images/'. $newImageName;
+                    move_uploaded_file($imageTmp, $folderImage);
+                }
+            }
+        }
+        return $newImageName;
+        
     }

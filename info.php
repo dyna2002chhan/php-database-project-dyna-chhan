@@ -4,9 +4,8 @@
     <!-- search bar --------------------------------------------------->
   
     <form class="form-inline d-flex justify-content-end " action="/action_page.php">
-      <input class="form-control mr-sm-2" type="text" placeholder="ស្វែងរក">
-      <button class="btn btn-success mr-5" type="submit">ស្វែងរក</button>
-      <!-- sort by ------------------------------------------------------->
+      <input class="form-control mr-sm-2" type="text" placeholder="ស្វែងរក" name="search_bar">
+      <button class="btn btn-success mr-5" type="submit" name="search_btn">ស្វែងរក</button=      <!-- sort by ------------------------------------------------------->
         <div class="dropdown mr-5">
             <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
             លំដាប់
@@ -25,7 +24,7 @@
             <h2 class="text-center">បញ្ចូលទិន្ន័យ</h2>
         </div>
         <div class=" text-center">
-            <a href="insert_patient.php" class="insert-btn btn btn-dark text-light">ចុចបញ្ចូល</a>
+            <a href="insert_doctor.php" class="insert-btn btn btn-dark text-light">ចុចបញ្ចូល</a>
         </div>
     </section>
     <!-- create doctor form ------------------------------------------->
@@ -38,32 +37,32 @@
         <?php 
             require_once('inc/database.php');
             $posts = selectAllDatas();
-            foreach($posts as $post):
+            forEach($posts as $post):
         ?>
-      <div class=" pt-3"> 
-        <div class="card ml-5 pt-2 pl-2 bg-info text-light">
-            <div class="card-body​ ">
-            <h6 class="d-flex justify-content-end"><?= $post['date']?></h6>                      
-
-                <div class="d-flex">
-                  
-                  <div class="info">
+      <div class="pt-3 d-flex justify-content-center"> 
+          <div class="card ml-5 pt-2 pl-2 bg-info text-light w-50">
+              <div class="card-body​ ">
+                  <h6 class="d-flex justify-content-end"><?= $post['date']?></h6>                      
+                  <div class="d-flex">               
+                      <div class="info">
                           <h6 >ឈ្មោះគ្រូពេទ្យ :<?= $post['lastname']?> <?= $post['firstname']?></h6>                       
                           <h6 >ចំណងជើង :<?= $post['title']?></h6>                          
                           <h6 >​​​​​​​​​​​​​​​​​​​​​​ការសរសេរ : <?= $post['description']?></h6> 
-                          
+                          <!-- profile picture of doctor -->
+                          <div class="card-image mr-3">
+                              <img class="img-fluid" width="200" src="assets/images/<?= $post['doctor_picture']?>" alt="">
+                          </div>
+                      </div>
                   </div>
-                </div>
-                <!-- profile picture of patient ---------------------------------------------->
-                <!-- edit and delete button -------------------------------------------------->
-                
-                <div class="action d-flex justify-content-end">
-                    <a href="edit_data.php?id=<?= $post['post_id']?>" class="btn btn-primary btn-sm mr-2"><i class="fa fa-pencil"></i></a>
-                    <a href="delete_data.php?id=<?= $post['post_id']?>" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i></a>
-                </div>
+                  <!-- edit and delete button-------------->
+                  
+                  <div class="action d-flex justify-content-end">
+                      <a href="edit_data.php?id=<?= $post['post_id']?>" class="btn btn-primary btn-sm mr-2"><i class="fa fa-pencil"></i></a>
+                      <a href="delete_data.php?id=<?= $post['post_id']?>" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i></a>
+                  </div>
 
-            </div>
-        </div>
+              </div>
+          </div>
       </div>
       <?php endforEach ;?>
     </div>
