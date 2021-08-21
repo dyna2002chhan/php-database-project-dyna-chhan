@@ -13,8 +13,17 @@
 
     //select all data..............................................................................................//
     function selectAllDatas(){
+        $result = 3;
+
+        $page = 0;
+        isset($_GET['page']) ? $page = $_GET['page'] : $page = 0;
+        if($page> 1){
+            $start = ($page * $result) - $result;
+        }else{
+            $start = 0;
+        }
         return database()->query("SELECT * FROM posts INNER JOIN doctors ON posts.doctor_id = doctors.doctor_id
-                                                      ORDER BY post_id DESC");
+                                                      ORDER BY post_id DESC LIMIT $start, $result");
     } 
 
     //delete data..................................................................................................//
@@ -45,7 +54,8 @@
         $doctorImg = $value['doctorImg'];
         return database()->query("INSERT INTO posts(title,doctor_picture,description, doctor_id) VALUES ('$title','$doctorImg','$description','$doctor_id')");
     }
-    //upload image
+    
+    //upload image................................................................................................//
     function uploadImage($file){
         $imageName = $file['name'];
         $imageTmp = $file['tmp_name'];
@@ -71,4 +81,30 @@
         }
         return $newImageName;
         
+    }
+    //search function............................................................................................//
+    function searchTitle($value){
+        $search = $value['search_bar'];
+        return database()->query("SELECT * FROM posts
+                                  INNER JOIN doctors ON posts.doctor_id = doctors.doctor_id 
+                                  WHERE posts.title LIKE '%$search%'");
+    }
+    //pagination................................................................................................//
+    function getPages(){
+        $result = 3;
+
+        $page = 0;
+        isset($_GET['page']) ? $page = $_GET['page'] : $page = 0;
+
+        if($page > 1){
+            $start = ($page * $result) - $result;
+        }else{
+            $start = 0;
+        }
+        $data = database()->query("SELECT post_id from posts");
+
+        // get total pages
+        $numRow = $data->num_rows;
+        $totalPages = $numRow / $result;
+        return $totalPages;
     }

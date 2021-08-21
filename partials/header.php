@@ -1,5 +1,4 @@
-
-   <!doctype html>
+  <!doctype html>
    <html lang="en">
      <head>
         <title>ទំព័រដើម</title>
@@ -10,7 +9,8 @@
             <link rel="stylesheet" href="assets/css/home.css">
             <link rel="stylesheet" href="assets/css/info.css">
             <link rel="stylesheet" href="assets/css/contact.css">
-            
+            <!-- <link rel="stylesheet" href="assets/css/login.css"> -->
+
             <script src="https://kit.fontawesome.com/332a215f17.js" crossorigin="anonymous"></script>
         <!-- Bootstrap CSS -->
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">

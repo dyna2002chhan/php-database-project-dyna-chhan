@@ -1,11 +1,19 @@
 <?php
   include_once('partials/header.php');
+  require_once('inc/database.php');
+  $posts = "";
+  if($_SERVER['REQUEST_METHOD']=="POST"){
+      $posts = searchTitle($_POST);
+  } else {
+      $posts = selectAllDatas();
+  }
+
 ?>
     <!-- search bar --------------------------------------------------->
   
-    <form class="form-inline d-flex justify-content-end " action="/action_page.php">
-      <input class="form-control mr-sm-2" type="text" placeholder="ស្វែងរក" name="search_bar">
-      <button class="btn btn-success mr-5" type="submit" name="search_btn">ស្វែងរក</button=      <!-- sort by ------------------------------------------------------->
+    <form class="form-inline d-flex justify-content-end " method="post">
+      <input class="form-control mr-sm-2" type="search" placeholder="ស្វែងរក" name="search_bar">
+      <button class="btn btn-success mr-5" type="submit">ស្វែងរក</button>      <!-- sort by ------------------------------------------------------->
         <div class="dropdown mr-5">
             <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
             លំដាប់
@@ -36,7 +44,7 @@
 
         <?php 
             require_once('inc/database.php');
-            $posts = selectAllDatas();
+            if($posts-> num_rows > 0):
             forEach($posts as $post):
         ?>
       <div class="pt-3 d-flex justify-content-center"> 
@@ -64,8 +72,23 @@
               </div>
           </div>
       </div>
-      <?php endforEach ;?>
+      <?php endforEach ;
+        else:
+      ?>
+      <h1>Search not found!</h1>
+      <?php endif; ?>
     </div>
+    <!-- pagination -------------------------------------->
+    <div class="d-flex justify-content-center">
+            <ul class="pagination">
+               <?php  
+                    $pages = getPages();
+                    for($i = 1; $i <= $pages + 1; $i++):
+               ?>
+                    <li class="page-item"><a class="page-link" href="?page=<?= $i ?>"><?= $i ?></a></li>
+                <?php endfor ?>               
+            </ul>
+        </div>
     <!-- End create form ---------------------------------------------------------------------->
 
 
@@ -101,6 +124,6 @@
     </footer>
   </body>
   <?php
+    
     include_once('partials/footer.php');
   ?>
-</html>
