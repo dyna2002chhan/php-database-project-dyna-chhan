@@ -9,11 +9,13 @@
   }
 
 ?>
+
+
     <!-- search bar --------------------------------------------------->
   
     <form class="form-inline d-flex justify-content-end " method="post">
       <input class="form-control mr-sm-2" type="search" placeholder="ស្វែងរក" name="search_bar">
-      <button class="btn btn-success mr-5" type="submit">ស្វែងរក</button>      <!-- sort by ------------------------------------------------------->
+      <button class="btn btn-warning mr-5" type="submit">ស្វែងរក</button>      <!-- sort by ------------------------------------------------------->
         <div class="dropdown mr-5">
             <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
             លំដាប់

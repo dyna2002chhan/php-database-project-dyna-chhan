@@ -19,10 +19,6 @@
             <div class="form-group">
                 <input type="text" class="form-control" placeholder="doctor_id" name="doctor_id">
             </div>
-<!-- 
-            <div class="form-group">
-                <input type="text" class="form-control" placeholder="date" name="date">
-            </div> -->
 
             <!-- upload image -->
             <input type="file" name="image">

@@ -35,7 +35,9 @@
                        href="contact.php">ទំនាក់ទំនង</a></li>
                         <div class="form-group">
                           <!-- pel click submit, it request using post -->
-                          <a href="login.php" type="submit" class="btn btn-primary btn-block​ ml-5">ចូលគណនី</a>
+                          <a href="./pages/login.php" type="submit" class="btn btn-primary btn-block​ ml-5">ចូលគណនី</a>
+                          <a href="./pages/register.php" type="submit" class="btn btn-warning btn-block​ ml-5">រីជីស្ទើ</a>
+
                         </div>
 
                  </ul>

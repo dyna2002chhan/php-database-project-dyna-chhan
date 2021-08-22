@@ -108,3 +108,28 @@
         $totalPages = $numRow / $result;
         return $totalPages;
     }
+
+    //get data of user from database..........................................................................//
+    function selectUser(){
+        return database()->query("SELECT * FROM users");
+    }
+    //login...................................................................................................//
+    function login($value){
+        $username = trim($value['username']);
+        $password = trim($value['password']);
+        $users = selectUser();
+
+        foreach($users as $user){
+            echo (password_veryfy($password, trim($user['password'])));
+            if(password_verify($password, trim($user['password'])) and $username === $user['username']){
+                $_SESSION['username'] = $username;
+                $_SESSION['role'] = $user['role'];
+                $_SESSION['message'] = "Login successful";
+                header('Location: http://localhost/login/?page=welcome');
+            }else{
+                $_SESSION['message'] = "Login failed";
+                header("Location: http://localhost/login/?page=login_view");
+
+            }
+        }
+    }
